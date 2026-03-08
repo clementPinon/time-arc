@@ -260,7 +260,11 @@ export default function AnalogTimer() {
             ref={svgRef}
             viewBox="0 0 400 400"
             className="w-80 h-80 sm:w-96 sm:h-96 select-none"
-            style={{ touchAction: "none" }}
+            style={{ touchAction: "none", cursor: state === "alarm" ? "default" : "pointer" }}
+            onClick={handleKnobClick}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
           >
             {/* White face */}
             <circle cx={CX} cy={CY} r={RADIUS + 10} fill="hsl(var(--timer-face))" />
@@ -274,8 +278,8 @@ export default function AnalogTimer() {
               />
             )}
 
-            {/* White center circle overlay for cleaner look */}
-            <circle cx={CX} cy={CY} r={50} fill="hsl(var(--timer-face))" />
+            {/* Transparent center for text readability */}
+            <circle cx={CX} cy={CY} r={50} fill="hsl(var(--timer-face))" opacity={0.85} />
 
             {/* Tick marks */}
             {ticks}
@@ -345,32 +349,14 @@ export default function AnalogTimer() {
             >
               {state === "idle"
                 ? setMinutes > 0
-                  ? "tap knob to start"
-                  : "drag knob to set"
+                  ? "tap to start"
+                  : "drag to set"
                 : state === "running"
                 ? "tap to pause"
                 : state === "paused"
                 ? "tap to resume"
                 : "ALARM!"}
             </text>
-
-            {/* Center knob */}
-            <circle
-              cx={CX}
-              cy={CY}
-              r={30}
-              fill="hsl(var(--timer-face))"
-              stroke="hsl(var(--timer-tick))"
-              strokeWidth={2}
-              style={{ cursor: state === "alarm" ? "default" : "pointer" }}
-              onClick={handleKnobClick}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-            />
-            {/* Knob grip lines */}
-            <line x1={CX - 8} y1={CY - 3} x2={CX + 8} y2={CY - 3} stroke="hsl(var(--timer-tick))" strokeWidth={1.5} opacity={0.3} strokeLinecap="round" />
-            <line x1={CX - 8} y1={CY + 3} x2={CX + 8} y2={CY + 3} stroke="hsl(var(--timer-tick))" strokeWidth={1.5} opacity={0.3} strokeLinecap="round" />
           </svg>
         </div>
       </div>

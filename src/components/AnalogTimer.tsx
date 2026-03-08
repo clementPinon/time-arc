@@ -278,8 +278,8 @@ export default function AnalogTimer() {
               />
             )}
 
-            {/* White center circle overlay for cleaner look */}
-            <circle cx={CX} cy={CY} r={50} fill="hsl(var(--timer-face))" />
+            {/* Transparent center for text readability */}
+            <circle cx={CX} cy={CY} r={50} fill="hsl(var(--timer-face))" opacity={0.85} />
 
             {/* Tick marks */}
             {ticks}

@@ -349,32 +349,14 @@ export default function AnalogTimer() {
             >
               {state === "idle"
                 ? setMinutes > 0
-                  ? "tap knob to start"
-                  : "drag knob to set"
+                  ? "tap to start"
+                  : "drag to set"
                 : state === "running"
                 ? "tap to pause"
                 : state === "paused"
                 ? "tap to resume"
                 : "ALARM!"}
             </text>
-
-            {/* Center knob */}
-            <circle
-              cx={CX}
-              cy={CY}
-              r={30}
-              fill="hsl(var(--timer-face))"
-              stroke="hsl(var(--timer-tick))"
-              strokeWidth={2}
-              style={{ cursor: state === "alarm" ? "default" : "pointer" }}
-              onClick={handleKnobClick}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-            />
-            {/* Knob grip lines */}
-            <line x1={CX - 8} y1={CY - 3} x2={CX + 8} y2={CY - 3} stroke="hsl(var(--timer-tick))" strokeWidth={1.5} opacity={0.3} strokeLinecap="round" />
-            <line x1={CX - 8} y1={CY + 3} x2={CX + 8} y2={CY + 3} stroke="hsl(var(--timer-tick))" strokeWidth={1.5} opacity={0.3} strokeLinecap="round" />
           </svg>
         </div>
       </div>

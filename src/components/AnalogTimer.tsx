@@ -260,7 +260,11 @@ export default function AnalogTimer() {
             ref={svgRef}
             viewBox="0 0 400 400"
             className="w-80 h-80 sm:w-96 sm:h-96 select-none"
-            style={{ touchAction: "none" }}
+            style={{ touchAction: "none", cursor: state === "alarm" ? "default" : "pointer" }}
+            onClick={handleKnobClick}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
           >
             {/* White face */}
             <circle cx={CX} cy={CY} r={RADIUS + 10} fill="hsl(var(--timer-face))" />

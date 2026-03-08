@@ -361,6 +361,25 @@ export default function AnalogTimer() {
         </div>
       </div>
 
+      {/* Presets */}
+      {state === "idle" && (
+        <div className="flex items-center gap-3">
+          {[30, 15, 5].map((mins) => (
+            <button
+              key={mins}
+              onClick={() => setSetMinutes(mins)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                setMinutes === mins
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+              }`}
+            >
+              {mins} min
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Controls */}
       <div className="flex items-center gap-4">
         <button

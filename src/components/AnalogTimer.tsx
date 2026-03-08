@@ -298,7 +298,7 @@ export default function AnalogTimer() {
             {/* Bottom labels */}
             <text
               x={80}
-              y={360}
+              y={390}
               fill="hsl(var(--timer-tick))"
               fontSize="11"
               fontWeight="700"
@@ -309,7 +309,7 @@ export default function AnalogTimer() {
             </text>
             <text
               x={280}
-              y={360}
+              y={390}
               fill="hsl(var(--timer-tick))"
               fontSize="11"
               fontWeight="700"
